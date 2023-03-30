@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] 99 Minutos</title>
+    <link href="~/lib/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/lib/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" href="~/img/favicon_black.ico" id="favicon">
+</head>
+<body>
+    <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo mr-auto"><img src="~/img/logo.png" alt="..."></h1>
+
+      <a class="get-started-btn " asp-controller="Login" asp-action="Logout">Cerrar Sesión</a>
+
+    </div>
+  </header>
+    <div >
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+   <footer id="footer">
+    <div class="container">
+      <div class="social-links">
+        <a href="https://twitter.com/USMP_oficial" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/fia.usmp" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/fiausmp/?hl=es-la" class="instagram"><i class="bx bxl-instagram"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>99 Minutos</span></strong>. Todos los derechos reservados
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
