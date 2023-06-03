@@ -1,8 +1,4 @@
  @model dynamic
-
- @{
-   string rpta="";
- }
   <br>
 
   <br>
@@ -27,28 +23,21 @@
           <th style="color: white;" scope="col">Motivo</th>
       </thead>
       <tbody>
+          @foreach (Enrutamiento en in @Model.Enrutamiento)
+        {
           <tr>
-            <th scope="row">Rapidos S.A.C.</th>
-            <td>A</td>
-            <td><ul><li>50% Pedidos realizados en ZONA A</li><li>Pedidos FRAGIL realizados con estado PUNTUAL</li><li>Zona A tendrá 40% pedidos FRAGIL</li></ul></td>
+            <th scope="row">@en.courier</th>
+            <td>@en.zona</td>
+            <td><ul><li>@en.motivo_1</li><li>@en.motivo_2</li><li>@en.motivo_3</li></ul></td>
           </tr>
-          <tr>
-            <th scope="row">Los Chaskis</th>
-            <td>A</td>
-            <td><ul><li>80% Pedidos realizados en ZONA A</li><li>Pedidos EXPRESS realizados con estado PUNTUAL</li><li>Zona A tendrá 40% pedidos FRAGIL</li></ul></td>
-          </tr>
-          <tr>
-            <th scope="row">Salvador</th>
-            <td>B</td>
-            <td><ul><li>50% Pedidos realizados en ZONA A</li><li>Pedidos FRAGIL realizados con estado PUNTUAL</li><li>Zona A tendrá 40% pedidos FRAGIL</li></ul></td>
-          </tr>
+        }
       </tbody>
     </table>
       </div>
     </div>
     <div class="row">
       <div style="text-align: center;">
-        <button class="get-started-btn scrollto" style="border-radius: 50px;margin:20px; background-color: #6fab2c;" type="submit">Generar Enrutamiento</button>
+        <button onclick="buscarRuta()" class="get-started-btn scrollto" style="border-radius: 50px;margin:20px; background-color: #6fab2c;">Generar Enrutamiento</button>
       </div>
     </div>
     <br>
@@ -56,3 +45,7 @@
     <br>
     <br>
   </div>
+  <script>
+    function buscarRuta(){ setTimeout(() => {GetRuta()}, 10*1000); }
+    function GetRuta(){window.location.href = "/Enrutamiento/GetRuta";}
+  </script>

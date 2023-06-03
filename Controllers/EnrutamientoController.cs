@@ -17,18 +17,28 @@ namespace MinutosProject.Controllers
     {
         private readonly ILogger<EnrutamientoController> _logger;
         private readonly ApplicationDbContext _context;
+        private List<Enrutamiento> listEnrutamientos = new List<Enrutamiento>();
 
         public EnrutamientoController(ILogger<EnrutamientoController> logger, ApplicationDbContext context)
         {
             _logger = logger;
             _context = context;
+            listEnrutamientos=_context.Enrutamientos.ToList();
         }
 
         public IActionResult Index()
         {
-            return View("Index"); 
+            dynamic modelo= new ExpandoObject();
+            modelo.Enrutamiento= new List<Enrutamiento>();
+            return View("Index",modelo); 
         }
 
+        public IActionResult GetRuta()
+        {
+            dynamic modelo= new ExpandoObject();
+            modelo.Enrutamiento= listEnrutamientos;
+            return View("Index",modelo); 
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
