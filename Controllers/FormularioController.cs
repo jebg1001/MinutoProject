@@ -1,13 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MinutosProject.Models;
 using MinutosProject.Data;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 using System.Dynamic;
 
@@ -42,8 +39,7 @@ namespace MinutosProject.Controllers
             if(ModelState.IsValid){
                 _context.Envios.Add(req);
                 _context.SaveChanges();
-                return RedirectToAction("Listado","Index");
-
+                return RedirectToAction("Index","Listado");
             }else{
                 return RedirectToAction("Index");
             }

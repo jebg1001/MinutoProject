@@ -19,5 +19,6 @@ namespace MinutosProject.Data{
         public DbSet<MinutosProject.Models.Courier> Couriers { get; set; }
         public DbSet<MinutosProject.Models.TipoServicio> Servicios { get; set; }
         public DbSet<MinutosProject.Models.TipoMercaderia> Mercaderias { get; set; }
+        public DbSet<MinutosProject.Models.Usuario> Usuarios { get; set; }
     }
 }

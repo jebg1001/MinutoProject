@@ -1,0 +1,111 @@
+ @model dynamic
+
+ @{
+   Auxiliar aux = new Auxiliar();
+   Courier cou = new Courier();
+   Empresa emp = new Empresa();
+   TipoServicio ser = new TipoServicio();
+   TipoMercaderia mer = new TipoMercaderia();
+   List<Auxiliar> lstAux = new List<Auxiliar>();
+   List<Courier> lstCou = new List<Courier>();
+   List<Empresa> lstEmp = new List<Empresa>();
+   List<TipoMercaderia> lstMer = new List<TipoMercaderia>();
+   List<TipoServicio> lstSer = new List<TipoServicio>();
+   lstAux = @Model.Auxiliares;
+   lstCou=@Model.Couriers;
+   lstEmp=@Model.Empresas;
+   lstSer=@Model.Servicios;
+   lstMer=@Model.Mercaderias;
+   string rpta="";
+ }
+  <br>
+
+  <br>
+
+  <br>
+
+  <br>
+
+  <br>
+
+  <br>
+
+  <div class="container col-lg-10"  style="text-align: center;">
+    <h2 style="color: black;">Envios Registrados</h2>
+    <table class="table" >
+      <thead>
+        <tr style="background-color: #6fab2c;">
+          <th style="color: white;" scope="col">ID</th>
+          <th style="color: white;" scope="col">Auxiliar</th>
+          <th style="color: white;" scope="col">Courier</th>
+          <th style="color: white;" scope="col">Empresa</th>
+          <th style="color: white;" scope="col">Tipo Servicio</th>
+          <th style="color: white;" scope="col">Tipo Mercaderia</th>
+          <th style="color: white;" scope="col">Fecha Entrega</th>
+          <th style="color: white;" scope="col">Hr. Llegada</th>
+          <th style="color: white;" scope="col">Hr. Salida</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (Envio req in @Model.Envios)
+        {
+            @for(int i=0; i<@lstAux.Count; i++){
+              @if(lstAux[i].ID==@req.Auxiliar){
+                aux=lstAux[i];
+                break;
+              }
+            }
+            @for(int i=0; i<@lstCou.Count; i++){
+              @if(lstCou[i].ID==@req.Courier){
+                cou=lstCou[i];
+                break;
+              }
+            }
+            @for(int i=0; i<@lstEmp.Count; i++){
+              @if(lstEmp[i].ID==@req.Empresa){
+                emp=lstEmp[i];
+                break;
+              }
+            }
+            @for(int i=0; i<@lstSer.Count; i++){
+              @if(lstSer[i].ID==@req.TipoServicio){
+                ser=lstSer[i];
+                break;
+              }
+            }
+            @for(int i=0; i<@lstMer.Count; i++){
+              @if(lstMer[i].ID==@req.TipoMercaderia){
+                mer=lstMer[i];
+                break;
+              }
+            }
+
+          <tr>
+            <th scope="row">@req.ID</th>
+            <td>@aux.Nombre</td>
+            <td>@cou.Nombre</td>
+            <td>@emp.Nombre</td>
+            <td>@ser.Nombre</td>
+            <td>@mer.Nombre</td>
+            <td>@req.FechaEntrega.ToString("MM/dd/yyyy")</td>
+            <td>@req.HraLlegada.ToString("hh:mm tt")</td>
+            <td>@req.HraSalida</td>
+            <td>
+              <form asp-action="Eliminar" asp-controller="Listado">
+                      <div class="form-group">
+                        <input type="hidden" value="@req.ID" asp-for="@req.ID"/>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#@rpta">Eliminar</button>
+                      </div>
+              </form>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>

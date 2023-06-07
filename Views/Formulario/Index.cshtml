@@ -3,38 +3,31 @@
 @{
     ViewData["Title"] = "Formulario de Envío";
 }
- 
- <section id="hero" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-
-      <h1>Agregar Envío<br></h1>
-    </div>
-  </section>
- 
-
 <section class="contact-box" style="background-color: white" >
     <div class="row no-gutters bg-dark">
-        <div class="col-xl-5 col-lg-12 register-Solicitud">
+        <div class="col-xl-7 col-lg-12 register-Solicitud">
         </div>
-        <div class="col-xl-7 col-lg-12 d-flex">
+        <div class="col-xl-5 col-lg-12 d-flex">
              <div class="container align-self-center p-6" >
+              <br>
+              <br>
                  <h1 class="font-weight-bold mb-3" style="color: black;">Completa el formulario de Envío</h1>
                  <br>
                 @foreach (Envio req in @Model.Envio){
                  <form asp-action="Enviar" asp-controller="Formulario" method="POST">
                       <div class="form-group mb-3">
                          <label  class="font-weight-bold" style="color: black;">Identificador:<span class="text-danger">*</span></label>
-                         <input type="text"  style="background-color: #910222; color:white;" class="form-control" asp-for="@req.ID">
+                         <input type="text"  style="background-color: #6fab2c; color:white;" class="form-control" asp-for="@req.ID">
                           <span  class="text-danger"></span>
                      </div>
                      <br>
                      <div class="form-group mb-3">
                         <label  class="font-weight-bold" style="color: black;">Auxiliar:<span class="text-danger">*</span></label>
                         <br>
-                        <select asp-for="@req.Auxiliar" class="form-control" style="height: 70px; background-color: #910222; color:white;" >
+                        <select asp-for="@req.Auxiliar" class="form-control" style="height: 70px; background-color: #6fab2c; color:white;" >
                           @foreach (Auxiliar aux in @Model.Auxiliar)
                           {
-                              <option value="@aux.ID">@aux.Nombre</option>
+                              <option value=@aux.ID>@aux.Nombre</option>
                           }
                         </select>
                          <span class="text-danger"></span>
@@ -43,10 +36,10 @@
                      <div class="form-group mb-3">
                         <label  class="font-weight-bold" style="color: black;">Courier:<span class="text-danger">*</span></label>
                         <br>
-                        <select asp-for="@req.Courier" class="form-control" style="height: 70px; background-color: #910222; color:white;" >
+                        <select asp-for="@req.Courier" class="form-control" style="height: 70px; background-color: #6fab2c; color:white;" >
                           @foreach (Courier cou in @Model.Courier)
                           {
-                              <option value="@cou.ID">@cou.Nombre</option>
+                              <option value=@cou.ID>@cou.Nombre</option>
                           }
                         </select>
                          <span class="text-danger"></span>
@@ -55,10 +48,10 @@
                      <div class="form-group mb-3">
                         <label  class="font-weight-bold" style="color: black;">Empresa:<span class="text-danger">*</span></label>
                         <br>
-                        <select asp-for="@req.Empresa" class="form-control" style="height: 70px; background-color: #910222; color:white;" >
+                        <select asp-for="@req.Empresa" class="form-control" style="height: 70px; background-color: #6fab2c; color:white;" >
                           @foreach (Empresa emp in @Model.Empresa)
                           {
-                              <option value="@emp.ID">@emp.Nombre</option>
+                              <option value=@emp.ID>@emp.Nombre</option>
                           }
                         </select>
                          <span class="text-danger"></span>
@@ -67,10 +60,10 @@
                      <div class="form-group mb-3">
                         <label  class="font-weight-bold" style="color: black;">Tipo Servicio:<span class="text-danger">*</span></label>
                         <br>
-                        <select asp-for="@req.TipoServicio" class="form-control" style="height: 70px; background-color: #910222; color:white;" >
+                        <select asp-for="@req.TipoServicio" class="form-control" style="height: 70px; background-color: #6fab2c; color:white;" >
                           @foreach (TipoServicio emp in @Model.TipoServicio)
                           {
-                              <option value="@emp.ID">@emp.Nombre</option>
+                              <option value=@emp.ID>@emp.Nombre</option>
                           }
                         </select>
                          <span class="text-danger"></span>
@@ -79,18 +72,39 @@
                      <div class="form-group mb-3">
                         <label  class="font-weight-bold" style="color: black;">Tipo Mercaderia:<span class="text-danger">*</span></label>
                         <br>
-                        <select asp-for="@req.TipoMercaderia" class="form-control" style="height: 70px; background-color: #910222; color:white;" >
+                        <select asp-for="@req.TipoMercaderia" class="form-control" style="height: 70px; background-color: #6fab2c; color:white;" >
                           @foreach (TipoMercaderia emp in @Model.TipoMercaderia)
                           {
-                              <option value="@emp.ID">@emp.Nombre</option>
+                              <option value=@emp.ID>@emp.Nombre</option>
                           }
                         </select>
                          <span class="text-danger"></span>
                      </div>
                      <br>
+                     <div class="form-group mb-3">
+                        <label  class="font-weight-bold" style="color: black;">Fecha Entrega:<span class="text-danger">*</span></label>
+                        <br>
+                         <input type="date"  style="background-color: #6fab2c; color:white;" class="form-control" asp-for="@req.FechaEntrega">
+                         <span class="text-danger"></span>
+                     </div>
+                     <br>
+                     <div class="form-group mb-3">
+                        <label  class="font-weight-bold" style="color: black;">Hora Salida:<span class="text-danger">*</span></label>
+                        <br>
+                         <input type="time"  style="background-color: #6fab2c; color:white;" class="form-control" asp-for="@req.HraSalida">
+                         <span class="text-danger"></span>
+                     </div>
+                     <br>
+                     <div class="form-group mb-3">
+                        <label  class="font-weight-bold" style="color: black;">Hora Llegada:<span class="text-danger">*</span></label>
+                        <br>
+                         <input type="time"  style="background-color: #6fab2c; color:white;" class="form-control" asp-for="@req.HraLlegada">
+                         <span class="text-danger"></span>
+                     </div>
+                     <br>
                    <br>
                    <div style="text-align: center;">
-                      <button class="get-started-btn scrollto" style="border-radius: 50px;margin:20px" type="submit">Regístrar</button>
+                      <button class="get-started-btn scrollto" style="border-radius: 50px;margin:20px; background-color: #6fab2c;" type="submit">Registrar</button>
                    </div>
              
                  </form>

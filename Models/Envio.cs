@@ -19,15 +19,15 @@ namespace MinutosProject.Models
         public int Courier { get; set; }
 
         [Required]
-        [Column("courier")]
+        [Column("empresa")]
         public int Empresa { get; set; }
 
         [Required]
-        [Column("courier")]
+        [Column("servicio")]
         public int TipoServicio { get; set; }
 
         [Required]
-        [Column("courier")]
+        [Column("mercaderia")]
         public int TipoMercaderia { get; set; }
 
         [Column("fec_entre")]

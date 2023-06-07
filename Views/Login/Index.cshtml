@@ -1,0 +1,41 @@
+@model MinutosProject.Models.Usuario
+
+@{
+    Layout="";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] 99 Minutos</title>
+    <link href="~/lib/icofont/icofont.min.css" rel="stylesheet">
+    <link href="~/lib/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" /><link rel="shortcut icon" href="~/img/favicon_black.ico" id="favicon">
+</head>
+<body>
+    <div >
+        <main role="main" >
+            <div id="login" >
+            <div class="loginbox" style="padding-bottom: none;">
+                    <h1><img src="~/img/logo.png" alt="..." style="width: 60%;"></h1>
+                    <form asp-action="Logueo" asp-controller="Login">
+                        <p>Usuario</p>
+                        <input type="text" asp-for="email" placeholder="Escribe tu correo organizacional">
+                        <p>Contraseña</p>
+                        <input type="password" asp-for="password" placeholder="Escribe tu contraseña">
+                    </form>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">><input type="submit" value="Iniciar Sesión"></a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

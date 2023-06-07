@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MinutosProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230330060928_Initial")]
+    [Migration("20230420041035_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,7 +87,7 @@ namespace MinutosProject.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("Empresa")
-                        .HasColumnName("courier")
+                        .HasColumnName("empresa")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("FechaEntrega")
@@ -107,11 +107,11 @@ namespace MinutosProject.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("TipoMercaderia")
-                        .HasColumnName("courier")
+                        .HasColumnName("mercaderia")
                         .HasColumnType("integer");
 
                     b.Property<int>("TipoServicio")
-                        .HasColumnName("courier")
+                        .HasColumnName("servicio")
                         .HasColumnType("integer");
 
                     b.HasKey("ID");

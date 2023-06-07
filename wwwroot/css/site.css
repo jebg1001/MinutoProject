@@ -41,14 +41,14 @@ a:hover {
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  background:#6C0D0E;
+  background:#6fab2c;
   color: #fff;
   transition: all 0.4s;
   text-decoration: none;
 }
 
 .back-to-top i:hover {
-  background:#6C0D0E;
+  background:#6fab2c;
   color: #fff;
   text-decoration: none;
 }
@@ -83,7 +83,7 @@ a:hover {
 }
 
 #header .logo a {
-  color:#6C0D0E;
+  color:#6fab2c;
   text-decoration: none;
 }
 
@@ -127,7 +127,7 @@ a:hover {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #222222;
+  color: #9eeb47;
   transition: 0.3s;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
@@ -367,7 +367,6 @@ a:hover {
   font-size: 14px;
   text-align: center;
   padding: 30px 0;
-
 }
 
 #footer h3 {
@@ -394,7 +393,7 @@ a:hover {
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #6C0D0E ;
+  background: #6fab2c ;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
@@ -622,7 +621,7 @@ a:hover {
 #hero {
   width: 100%;
   height: 80vh;
-  background: url("../img/alumnos.jpg") top center;
+  background: url("../img/envio.jpg") top center;
   background-size: cover;
   position: relative;
 }
@@ -779,7 +778,7 @@ a:hover {
 .loginbox{
   width: 500px;
   height: 420px;
-  background: black;
+  background: #a3a89d;
   color: #fff;
   top: 55%;
   left: 50%;
@@ -826,8 +825,8 @@ h1{
   border: none;
   outline: none;
   height: 40px;
-  background: #CCCDCF;
-  color: black;
+  background: #9eeb47;
+  color: #fff;
   font-size: 18px;
   border-radius: 20px;
 }
@@ -901,7 +900,7 @@ body {
 
 
 .register-Solicitud {
-  background-image: url('../img/formularioSolicitud.jpg');
+  background-image: url('../img/envio.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
