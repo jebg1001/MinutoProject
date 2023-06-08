@@ -7,6 +7,10 @@ namespace MinutosProject.Models
     public class Usuario
     {
         [Key]
+        [System.ComponentModel.DataAnnotations.Schema.DatabaseGenerat‌ed(System.ComponentM‌​odel.DataAnnotations‌​.Schema.DatabaseGeneratedOp‌​tion.None)]
+        
+        [Column("id")]
+        public int id { get; set; }
         [Column("email")]
         public string email { get; set; }
 

@@ -1,4 +1,7 @@
   @model dynamic
+  @{
+    var count= 0;
+  }
   <br><br><br><br><br><br>
 <div class="row">
   <div class="col-lg-6 p-6"  style="text-align: center;">
@@ -10,19 +13,21 @@
         </tr>
       </thead>
       <tbody>
-        @foreach (Usuario usu in @Model.Usuarios)
+        @foreach (Usuario usr in @Model.Usuarios)
         {
           <tr>
-            <th scope="row">@usu.email</th>
+            <th scope="row">@usr.email</th>
             <td>
-              <form asp-action="Eliminar" asp-controller="Listado">
+              <div>
+              <form asp-action="Eliminar" asp-controller="Usuario" id="form_eliminar">
                       <div class="form-group">
-                        <input type="hidden" value="@usu.email" asp-for="@usu.email"/>
+                        <input type="hidden" value="@usr.id" name="id"/>
+                        <input type="hidden" value="@usr.email" name="email"/>
                       </div>
                       <div class="form-group">
-                        <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#@usu.email">Eliminar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
                       </div>
-              </form>
+              </form></div>
             </td>
           </tr>
         }
@@ -35,27 +40,67 @@
   </div>
   <div class="col-lg-6 d-flex">
              <div class="p-6" >
-                 <h1 class="font-weight-bold mb-3" style="color: black;">Completa el formulario de Envío</h1>
+                 <h1 class="font-weight-bold mb-3" style="color: black;">Completa el formulario de Usuario</h1>
                  <br>
-                @foreach (Usuario user in @Model.UsuarioNew){
-                 <form asp-action="Enviar" asp-controller="Usuario" method="POST">
+                @foreach (Usuario usu in @Model.UsuarioNew){
+                 <div><form asp-action="Enviar" asp-controller="Usuario" method="POST" id="form_enviar">
                       <div class="form-group mb-3">
-                         <label  class="font-weight-bold" style="color: black;">Correo:<span class="text-danger">*</span></label>
-                         <input type="text"  style="background-color: #6fab2c; color:white;" class="form-control" asp-for="@user.email">
-                          <span  class="text-danger"></span>
+                        <label  class="font-weight-bold" style="color: black;">Correo:<span class="text-danger">*</span></label>
+                        <input type="text"  style="background-color: #6fab2c; color:white;" class="form-control" name="email">
+                        <span  class="text-danger"></span>
                      </div>
                      <br>
                       <div class="form-group mb-3">
                          <label  class="font-weight-bold" style="color: black;">Contraseña:<span class="text-danger">*</span></label>
-                         <input type="password"  style="background-color: #6fab2c; color:white;" class="form-control" asp-for="@user.password">
+                         <input type="password"  style="background-color: #6fab2c; color:white;" class="form-control" name="password">
                           <span  class="text-danger"></span>
                      </div>
                    <br>
                    <div style="text-align: center;">
                       <button class="get-started-btn scrollto" style="border-radius: 50px;margin:20px; background-color: #6fab2c;" type="submit">Registrar</button>
                    </div>
-                 </form>
+                 </form></div>
                 }
              </div>
    </div>
 </div>
+
+<script>
+  $( "#form_enviar" ).submit(function( evento ) {
+ 
+  // Evita que el formulario se entregue normalmente
+  evento.preventDefault();
+ 
+  // Obten algunos valores de elementos en la página:
+  var $formulario = $( this ),
+    email = $formulario.find( "email" ).val(),
+    password = $formulario.find( "password" ).val(),
+    url = $formulario.attr( "action" );
+ 
+  // Envía los datos usando post
+  var postear = $.post( url, { email: email, password: password } );
+ 
+  // Pon los resultados en un div
+  postear.done(function( datos ) {
+    location.reload();
+  });
+});
+$( "#form_eliminar" ).submit(function( evento ) {
+ 
+  // Evita que el formulario se entregue normalmente
+  evento.preventDefault();
+ 
+  // Obten algunos valores de elementos en la página:
+  var $formulario = $( this ),
+    email = $formulario.find( "email" ).val(),
+    url = $formulario.attr( "action" );
+ 
+  // Envía los datos usando post
+  var postear = $.post( url, { email: email} );
+ 
+  // Pon los resultados en un div
+  postear.done(function( datos ) {
+    location.reload();
+  });
+});
+</script>

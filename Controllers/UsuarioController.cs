@@ -34,7 +34,7 @@ namespace MinutosProject.Controllers
             modelo.UsuarioNew = listUserNew;
             return View("Index",modelo); 
         }
-
+        [HttpPost]
         public IActionResult Enviar(Usuario req){
             if(ModelState.IsValid){
                 _context.Usuarios.Add(req);
@@ -44,11 +44,10 @@ namespace MinutosProject.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
         public IActionResult Eliminar(Usuario req)
         {
-            Usuario envio= _context.Usuarios.Where(r => r.email == req.email).FirstOrDefault();
-            _context.Remove(envio);
+            Usuario user= _context.Usuarios.Where(r => r.email == req.email).FirstOrDefault();
+            _context.Remove(user);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
