@@ -37,6 +37,7 @@ namespace MinutosProject.Controllers
         {
             dynamic modelo= new ExpandoObject();
             modelo.Enrutamiento= listEnrutamientos;
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(10));
             return View("Index",modelo); 
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
